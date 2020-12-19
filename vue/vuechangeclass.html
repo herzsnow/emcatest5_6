@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/css">
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  #app{
+    position: relative;
+    height: 300px;
+    width: 300px;
+    background-color: rgb(135, 180, 219);
+  }
+    #app1{
+      position: relative;
+      height: 300px;
+      width: 300px;
+     background-color: rgb(135, 180, 219);
+   }
+    .addcl1 {
+      height: 100px;
+      width: 100px;
+      background-color: rgb(53, 167, 129);
+    }
+    .addcl2 {
+      height: 100px;
+      width: 100px;
+    /* margin-left: 100px; */
+      background-color: rgb(56, 146, 206);
+      animation: addcl2 1s infinite;
+    }
+  .addcl3 {
+    color:red;
+  }
+  @keyframes addcl2{
+    from{
+      transform: translateX(-50px);
+    }
+    to{
+      
+      transform: translateX(50px);
+    }
+  }
+  </style>
+
+</head>
+<body>
+  <!-- <div id="app">
+    <div class="addcl1" :class="a"></div>
+
+    <button  @click="update" @mouseleave="delete1">启动</button>
+  </div> -->
+  <div id="app1">
+    <div class="" :class="{addcl1:isa,addcl2:isb,addcl3:isc}">hello</div>
+
+    <button  @mouseover="update" @mouseleave="delete1">启动</button>
+  </div>
+  <!-- <script src="../vue.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script type="text/javascript">
+  //  let vm = new Vue({
+  //   el: '#app',
+  //   data: {
+  //     a: "addcl1"
+  //    },
+  //   methods:{
+  //     update () {
+  //       this.a = "addcl2"
+  //     }
+  //   }
+  // })
+  let vm1 = new Vue({
+    el: '#app1',
+    data: {
+//除了字符串不要给其他值加引号
+      isa: true,
+      isb: false,
+      isc: false
+     },
+    methods:{
+      update () {
+        this.isa = false
+        this.isb = true
+        this.isc = true
+      },
+      delete1 () {
+        this.isa = true
+        this.isb = false
+        this.isc = false
+      }
+    }
+  })
+  </script>
+</body>
+</html>

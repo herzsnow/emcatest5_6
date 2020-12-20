@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+  <style type="text/css">
+  .fade-enter-active,.fade-leave-active{
+    transition: all 1s;;
+  }
+  .fade-enter,.fade-leave-to{
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  .fade-leave,.fade-enter-to{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  </style>
+</head>
+<body>
+  
+  <div id="app">
+    <button v-on:click="isshow = !isshow">
+      Toggle
+    </button>
+    <transition name="fade">
+      <p v-show="isshow">hello</p>
+    </transition>
+      <p>
+        {{date1|dateFilter}}
+      </p>
+  </div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script type="text/javascript">
+  // 定义一个全局过滤器，通过moment重新规划时间
+  Vue.filter('dateFilter', function (value, format='YYYY-MM-DD HH:mm:ss') {
+    return moment(value).format(format)
+  })
+  // 新建一个vue实例
+  const vm1 = new Vue({
+    el: '#app',
+    data: {
+      isshow:true,
+      date1: new Date()
+    }
+  })
+  </script>
+</body>
+</html>
